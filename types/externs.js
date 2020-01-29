@@ -5,26 +5,26 @@
 
 /* typal types/index.xml externs */
 /** @const */
-var _myNewPackage = {}
+var _npmS = {}
 /**
  * Options for the program.
  * @record
  */
-_myNewPackage.Config
+_npmS.Config
 /**
  * A boolean option. Default `true`.
  * @type {boolean|undefined}
  */
-_myNewPackage.Config.prototype.shouldRun
+_npmS.Config.prototype.shouldRun
 /**
  * A text to return.
  * @type {string|undefined}
  */
-_myNewPackage.Config.prototype.text
+_npmS.Config.prototype.text
 
 /* typal types/api.xml externs */
 /**
- * {{ description }}
- * @typedef {function(!_myNewPackage.Config): !Promise<string>}
+ * Run NPM commands in series.
+ * @typedef {function(!_npmS.Config): !Promise<string>}
  */
-_myNewPackage.myNewPackage
+_npmS.npmS

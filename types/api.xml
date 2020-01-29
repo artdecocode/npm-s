@@ -1,6 +1,6 @@
-<types namespace="_myNewPackage">
-  <method name="myNewPackage" async return="string">
-    <arg type="!_myNewPackage.Config" name="config">The config.</arg>
-    {{ description }}
+<types namespace="_npmS">
+  <method name="npmS" async return="string">
+    <arg type="!_npmS.Config" name="config">The config.</arg>
+    Run NPM commands in series.
   </method>
 </types>

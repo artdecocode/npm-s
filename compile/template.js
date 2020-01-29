@@ -1,12 +1,12 @@
-const { _myNewPackage } = require('./mnp')
+const { _npmS } = require('./npm-s')
 
 /**
- * @methodType {_myNewPackage.myNewPackage}
+ * @methodType {_npmS.npmS}
  */
-function myNewPackage(config) {
-  return _myNewPackage(config)
+function npmS(config) {
+  return _npmS(config)
 }
 
-module.exports = myNewPackage
+module.exports = npmS
 
 /* typal types/index.xml namespace */

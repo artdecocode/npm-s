@@ -1,6 +1,6 @@
 import '../types/externs'
-import myNewPackage from './'
+import npmS from './'
 
 module.exports = {
-  '_myNewPackage': myNewPackage,
+  '_npmS': npmS,
 }

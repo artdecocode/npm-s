@@ -1,11 +1,11 @@
-# my-new-package
+# @artdeco/npm-s
 
-%NPM: my-new-package%
+%NPM: @artdeco/npm-s%
 
-`my-new-package` is {{ description }}
+`@artdeco/npm-s` is Run NPM commands in series.
 
 ```sh
-yarn add my-new-package
+yarn add @artdeco/npm-s
 ```
 
 ## Table Of Contents

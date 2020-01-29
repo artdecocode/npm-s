@@ -2,10 +2,10 @@ export {}
 
 /* typal types/api.xml namespace */
 /**
- * @typedef {_myNewPackage.myNewPackage} myNewPackage {{ description }}
- * @typedef {(config: !_myNewPackage.Config) => string} _myNewPackage.myNewPackage {{ description }}
+ * @typedef {_npmS.npmS} npmS Run NPM commands in series.
+ * @typedef {(config: !_npmS.Config) => string} _npmS.npmS Run NPM commands in series.
  */
 
 /**
- * @typedef {import('..').Config} _myNewPackage.Config
+ * @typedef {import('..').Config} _npmS.Config
  */
