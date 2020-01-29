@@ -3,15 +3,11 @@ import Context from '../context'
 import npmS from '../../src'
 
 export default makeTestSuite('test/result/default', {
-  /**
-   * @param {Context} ctx
-   */
-  async getResults({ fixture }) {
-    const text = fixture`test.txt` + `\n${this.input}`
+  async getResults() {
     const res = await npmS({
-      text,
+      scripts: this.input.split(' '),
     })
-    return res
+    return JSON.stringify(res)
   },
   context: Context,
 })

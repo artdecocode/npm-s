@@ -12,19 +12,34 @@ var _npmS = {}
  */
 _npmS.Config
 /**
- * A boolean option. Default `true`.
- * @type {boolean|undefined}
+ * The scripts to execute.
+ * @type {!Array<string>}
  */
-_npmS.Config.prototype.shouldRun
+_npmS.Config.prototype.scripts
 /**
- * A text to return.
- * @type {string|undefined}
+ * The result of a script.
+ * @record
  */
-_npmS.Config.prototype.text
+_npmS.ScriptResult
+/**
+ * The exit code.
+ * @type {number}
+ */
+_npmS.ScriptResult.prototype.code
+/**
+ * The stdout of the program.
+ * @type {string}
+ */
+_npmS.ScriptResult.prototype.stdout
+/**
+ * The stderr of the program.
+ * @type {string}
+ */
+_npmS.ScriptResult.prototype.stderr
 
 /* typal types/api.xml externs */
 /**
- * Run NPM commands in series.
- * @typedef {function(!_npmS.Config): !Promise<string>}
+ * Run Multiple NPM Commands In Series.
+ * @typedef {function(!_npmS.Config): !Promise<!Array<!_npmS.ScriptResult>>}
  */
 _npmS.npmS

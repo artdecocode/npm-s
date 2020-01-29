@@ -1,39 +1,32 @@
-import { _help, _init, _output, _version, _input, argsConfig } from './get-args'
+import { _help, _version, _scripts, argsConfig } from './get-args'
 import { reduceUsage } from 'argufy'
 import usually from 'usually'
-import { readFileSync, writeFileSync } from 'fs'
-import { c } from 'erte'
-import Init from './commands/init'
 import npmS from '../'
 
 if (_help) {
   const usage = usually({
-    description: 'Run NPM commands in series.',
-    example: 'npm-s example.txt -o out.txt',
-    line: 'npm-s input [-o output] [-ihv]',
+    description: 'Run Multiple Yarn Commands In Series.',
+    example: 'yarn-s script-1 script-2',
+    line: 'yarn-s script[,script,...]',
     usage: reduceUsage(argsConfig),
   })
   console.log(usage)
   process.exit(0)
 } else if (_version) {
-  console.log(require('../../package.json').version)
+  console.log(require('../../package.json')['version'])
   process.exit(0)
 }
 
 (async () => {
   try {
-    if (_init) return await Init()
-    if (!_input) throw new Error('Please pass an input file.')
-    const content = /** @type {string} */ (readFileSync(_input, 'utf8'))
-    const output = await npmS({
-      shouldRun: true,
-      text: content,
+    if (!_scripts || !_scripts.length)
+      throw new Error('Please pass at least one command.')
+    await npmS({
+      scripts: /** @type {!Array<string>} */ (_scripts),
     })
-    if (_output == '-') console.log(output)
-    else writeFileSync(_output, output)
-    console.error('File %s successfully processed.', c(_input, 'yellow'))
   } catch (err) {
     if (process.env['DEBUG']) console.error(err.stack)
     else console.log(err.message)
+    process.exit(err.code)
   }
 })()
