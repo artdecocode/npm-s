@@ -2,10 +2,11 @@ import { c as co } from 'erte'
 import spawncommand from 'spawncommand'
 
 /**
- * @param {string} a The script to run with NPM.
+ * @param {string} script The script to run with NPM.
+ * @param {!Array<string>} args Additional arguments.
  */
-const run = (script) => {
-  const proc = spawncommand('npm', ['run', script])
+const run = (script, args = []) => {
+  const proc = spawncommand('npm', ['run', script, ...args])
   proc.stdout.pipe(process.stdout)
   proc.stderr.pipe(process.stderr)
   const { promise } = proc
@@ -15,13 +16,13 @@ const run = (script) => {
 /**
  * @type {_npmS.npmS}
  */
-export default async function npmS(config = {}) {
+export default async function npmS(config) {
   if (!config) throw new Error('Config is expected')
-  const { scripts = [] } = config
+  const { scripts = [], args } = config
   return await scripts
     .reduce(async (acc, command) => {
       acc = await acc
-      const { promise } = run(command)
+      const { promise } = run(command, args)
       const c = await promise
       const { code } = c
       if (code) {

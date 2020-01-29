@@ -1,0 +1,14 @@
+{
+  "_npmS.npmS": {
+    "link": "https://github.com/artdecocode/npm-s#async-npmsconfig-config-arrayscriptresult",
+    "description": "Run Multiple NPM Commands In Series."
+  },
+  "_npmS.Config": {
+    "link": "https://github.com/artdecocode/npm-s#type-config",
+    "description": "Options for the program."
+  },
+  "_npmS.ScriptResult": {
+    "link": "https://github.com/artdecocode/npm-s#type-scriptresult",
+    "description": "The result of a script."
+  }
+}

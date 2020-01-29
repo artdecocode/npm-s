@@ -2,7 +2,7 @@
 
 %NPM: @artdeco/npm-s%
 
-`@artdeco/npm-s` is Run NPM commands in series.
+`@artdeco/npm-s` Runs NPM commands in series.
 
 ```sh
 yarn add @artdeco/npm-s

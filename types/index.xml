@@ -3,6 +3,9 @@
     <prop type="!Array<string>" name="scripts">
       The scripts to execute.
     </prop>
+    <prop type="!Array<string>" name="args" opt>
+      Any additional arguments, e.g., `[--scripts-prepend-node-path]`.
+    </prop>
   </record>
   <record name="ScriptResult" desc="The result of a script.">
     <prop number name="code">

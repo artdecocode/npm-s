@@ -1,8 +1,8 @@
 # @artdeco/npm-s
 
-[![npm version](https://badge.fury.io/js/@artdeco/npm-s.svg)](https://www.npmjs.com/package/@artdeco/npm-s)
+[![npm version](https://badge.fury.io/js/%40artdeco%2Fnpm-s.svg)](https://www.npmjs.com/package/@artdeco/npm-s)
 
-`@artdeco/npm-s` is Run NPM commands in series.
+`@artdeco/npm-s` Runs NPM commands in series.
 
 ```sh
 yarn add @artdeco/npm-s
@@ -12,8 +12,9 @@ yarn add @artdeco/npm-s
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-- [`async npmS(config: !Config): string`](#async-mynewpackageconfig-config-string)
+- [`async npmS(config: !Config): !Array<!ScriptResult>`](#async-npmsconfig-config-arrayscriptresult)
   * [`Config`](#type-config)
+  * [`ScriptResult`](#type-scriptresult)
 - [CLI](#cli)
 - [Copyright & License](#copyright--license)
 
@@ -33,18 +34,27 @@ import npmS from '@artdeco/npm-s'
   <img src="/.documentary/section-breaks/1.svg?sanitize=true">
 </a></p>
 
-## <code>async <ins>npmS</ins>(</code><sub><br/>&nbsp;&nbsp;`config: !Config,`<br/></sub><code>): <i>string</i></code>
-Run NPM commands in series.
+## <code>async <ins>npmS</ins>(</code><sub><br/>&nbsp;&nbsp;`config: !Config,`<br/></sub><code>): <i>!Array<!ScriptResult></i></code>
+Run Multiple NPM Commands In Series.
 
  - <kbd><strong>config*</strong></kbd> <em><code><a href="#type-config" title="Options for the program.">!Config</a></code></em>: The config.
 
 __<a name="type-config">`Config`</a>__: Options for the program.
 
 
-|   Name    |       Type       |    Description    | Default |
-| --------- | ---------------- | ----------------- | ------- |
-| shouldRun | <em>boolean</em> | A boolean option. | `true`  |
-| text      | <em>string</em>  | A text to return. | -       |
+|     Name     |             Type              |       Description       |
+| ------------ | ----------------------------- | ----------------------- |
+| __scripts*__ | <em>!Array&lt;string&gt;</em> | The scripts to execute. |
+
+
+__<a name="type-scriptresult">`ScriptResult`</a>__: The result of a script.
+
+
+|    Name     |      Type       |        Description         |
+| ----------- | --------------- | -------------------------- |
+| __code*__   | <em>number</em> | The exit code.             |
+| __stdout*__ | <em>string</em> | The stdout of the program. |
+| __stderr*__ | <em>string</em> | The stderr of the program. |
 
 ```js
 import npmS from '@artdeco/npm-s'
@@ -57,8 +67,7 @@ import npmS from '@artdeco/npm-s'
 })()
 ```
 ```
-@artdeco/npm-s called with example
-example
+[]
 ```
 
 <p align="center"><a href="#table-of-contents">
@@ -78,19 +87,9 @@ The package can also be used from the CLI.
   </tr>
  </thead>
   <tr>
-   <td>input</td>
+   <td>scripts</td>
    <td></td>
-   <td>The path to the input file.</td>
-  </tr>
-  <tr>
-   <td>--output</td>
-   <td>-o</td>
-   <td>Where to save the output. By default prints to stdout. Default <code>-</code>.</td>
-  </tr>
-  <tr>
-   <td>--init</td>
-   <td>-i</td>
-   <td>Initialise in the current folder.</td>
+   <td>The scripts to execute in series.</td>
   </tr>
   <tr>
    <td>--help</td>
@@ -105,20 +104,50 @@ The package can also be used from the CLI.
 </table>
 
 ```
-Run NPM commands in series.
+Run Multiple Yarn Commands In Series.
 
-  npm-s input [-o output] [-ihv]
+  yarn-s script[,script,...]
 
-	input        	The path to the input file.
-	--output, -o 	Where to save the output. By default prints to stdout.
-	             	Default: -.
-	--init, -i   	Initialise in the current folder.
+	scripts      	The scripts to execute in series.
 	--help, -h   	Print the help information and exit.
 	--version, -v	Show the version's number and exit.
 
   Example:
 
-    npm-s example.txt -o out.txt
+    yarn-s script-1 script-2
+```
+
+The program will exit with status code 1 if one of the scripts exited with non-zero code.
+
+<table>
+<tr><th>pass</th><th>fail</th></tr>
+<tr><td>
+
+```js
+process.stdout.write('this file is fine\n')
+```
+</td>
+<td>
+
+```js
+process.stdout.write('hello wor')
+process.exit(1)
+```
+</td></tr>
+</table>
+
+**yarn-s pass fail**
+
+```
+> @artdeco/npm-s@0.0.0-pre pass /Users/zavr/adc/npm-s
+> node test/fixture/pass
+
+this file is fine
+
+> @artdeco/npm-s@0.0.0-pre fail /Users/zavr/adc/npm-s
+> node test/fixture/fail
+
+hello worCommand "fail" existed with code 1
 ```
 
 <p align="center"><a href="#table-of-contents">
@@ -132,7 +161,7 @@ GNU Affero General Public License v3.0
 <table>
   <tr>
     <td><img src="https://avatars3.githubusercontent.com/u/38815725?v=4&amp;s=100" alt="artdecocode"></td>
-    <td>© <a href="https://www.artd.eco">Art Deco™</a> 2019</td>
+    <td>© <a href="https://www.artd.eco">Art Deco™</a> 2020</td>
   </tr>
 </table>
 

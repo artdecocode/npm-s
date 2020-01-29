@@ -17,6 +17,11 @@ _npmS.Config
  */
 _npmS.Config.prototype.scripts
 /**
+ * Any additional arguments, e.g., `[--scripts-prepend-node-path]`.
+ * @type {(!Array<string>)|undefined}
+ */
+_npmS.Config.prototype.args
+/**
  * The result of a script.
  * @record
  */

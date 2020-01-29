@@ -1,4 +1,4 @@
-import { _help, _version, _scripts, argsConfig } from './get-args'
+import { _help, _version, _scripts, argsConfig, _argv } from './get-args'
 import { reduceUsage } from 'argufy'
 import usually from 'usually'
 import npmS from '../'
@@ -23,6 +23,7 @@ if (_help) {
       throw new Error('Please pass at least one command.')
     await npmS({
       scripts: /** @type {!Array<string>} */ (_scripts),
+      args: _argv,
     })
   } catch (err) {
     if (process.env['DEBUG']) console.error(err.stack)
