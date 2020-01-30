@@ -42,9 +42,10 @@ Run Multiple NPM Commands In Series.
 __<a name="type-config">`Config`</a>__: Options for the program.
 
 
-|     Name     |             Type              |       Description       |
-| ------------ | ----------------------------- | ----------------------- |
-| __scripts*__ | <em>!Array&lt;string&gt;</em> | The scripts to execute. |
+|     Name     |             Type              |                           Description                            |
+| ------------ | ----------------------------- | ---------------------------------------------------------------- |
+| __scripts*__ | <em>!Array&lt;string&gt;</em> | The scripts to execute.                                          |
+| args         | <em>!Array&lt;string&gt;</em> | Any additional arguments, e.g., `[--scripts-prepend-node-path]`. |
 
 
 __<a name="type-scriptresult">`ScriptResult`</a>__: The result of a script.
@@ -61,13 +62,20 @@ import npmS from '@artdeco/npm-s'
 
 (async () => {
   const res = await npmS({
-    text: 'example',
+    scripts: ['pass'],
+    args: ['--scripts-prepend-node-path'],
   })
   console.log(res)
 })()
 ```
 ```
-[]
+> @artdeco/npm-s@0.0.0-pre pass /Users/zavr/adc/npm-s
+> node test/fixture/pass
+
+this file is fine
+[ { code: 0,
+    stdout: '\n> @artdeco/npm-s@0.0.0-pre pass /Users/zavr/adc/npm-s\n> node test/fixture/pass\n\nthis file is fine\n',
+    stderr: '' } ]
 ```
 
 <p align="center"><a href="#table-of-contents">

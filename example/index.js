@@ -2,7 +2,8 @@ import npmS from '../src'
 
 (async () => {
   const res = await npmS({
-    text: 'example',
+    scripts: ['pass'],
+    args: ['--scripts-prepend-node-path'],
   })
   console.log(res)
 })()
