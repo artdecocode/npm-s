@@ -1,6 +1,6 @@
 {
   "name": "@artdeco/npm-s",
-  "version": "0.0.0-pre",
+  "version": "1.0.0",
   "description": "Run NPM commands in series.",
   "main": "compile/index.js",
   "module": "src/index.js",
