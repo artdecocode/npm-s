@@ -1,5 +1,9 @@
 ## 30 January 2020
 
+### [1.0.0](https://github.com/artdecocode/npm-s/compare/v0.0.0-pre...v1.0.0)
+
+- [package] Publish v1 of the package.
+
 ### 0.0.0-pre
 
 - Create `@artdeco/npm-s` with _[`My New Package`](https://MNPJS.org)_
