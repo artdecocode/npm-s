@@ -1,3 +1,9 @@
+## 3 February 2020
+
+### [1.0.1](https://github.com/artdecocode/npm-s/compare/v1.0.0...v1.0.1)
+
+- [fix] Pass the shell for `win`.
+
 ## 30 January 2020
 
 ### [1.0.0](https://github.com/artdecocode/npm-s/compare/v0.0.0-pre...v1.0.0)
