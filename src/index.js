@@ -1,12 +1,14 @@
 import { c as co } from 'erte'
-import spawncommand from 'spawncommand'
+import spawn from 'spawncommand'
 
 /**
  * @param {string} script The script to run with NPM.
  * @param {!Array<string>} args Additional arguments.
  */
 const run = (script, args = []) => {
-  const proc = spawncommand('npm', ['run', script, ...args])
+  const proc = spawn('npm', ['run', script, ...args], {
+    shell: process.platform == 'win32',
+  })
   proc.stdout.pipe(process.stdout)
   proc.stderr.pipe(process.stderr)
   const { promise } = proc

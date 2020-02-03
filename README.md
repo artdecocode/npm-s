@@ -69,12 +69,13 @@ import npmS from '@artdeco/npm-s'
 })()
 ```
 ```
-> @artdeco/npm-s@0.0.0-pre pass /Users/zavr/adc/npm-s
+> @artdeco/npm-s@1.0.0 pass /Users/anton/adc/npm-s
 > node test/fixture/pass
 
 this file is fine
 [ { code: 0,
-    stdout: '\n> @artdeco/npm-s@0.0.0-pre pass /Users/zavr/adc/npm-s\n> node test/fixture/pass\n\nthis file is fine\n',
+    stdout:
+     '\n> @artdeco/npm-s@1.0.0 pass /Users/anton/adc/npm-s\n> node test/fixture/pass\n\nthis file is fine\n',
     stderr: '' } ]
 ```
 
@@ -147,12 +148,12 @@ process.exit(1)
 **yarn-s pass fail**
 
 ```
-> @artdeco/npm-s@0.0.0-pre pass /Users/zavr/adc/npm-s
+> @artdeco/npm-s@1.0.0 pass /Users/anton/adc/npm-s
 > node test/fixture/pass
 
 this file is fine
 
-> @artdeco/npm-s@0.0.0-pre fail /Users/zavr/adc/npm-s
+> @artdeco/npm-s@1.0.0 fail /Users/anton/adc/npm-s
 > node test/fixture/fail
 
 hello worCommand "fail" existed with code 1
